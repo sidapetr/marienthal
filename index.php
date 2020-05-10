@@ -1,2 +1,2 @@
 <?php
-echo 'lorem ipsum dolor';
+echo 'lorem ipsum dolor sit';
