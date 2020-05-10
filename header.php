@@ -8,6 +8,6 @@
 </head>
 <body>
 <header class="container bg-dark">
-    <h1 class="text-white py-4 px-2">Assign into workshop</h1>
+    <h1 class="text-white py-4 px-2">Apply for a workshop!</h1>
 </header>
 <main class="container">
