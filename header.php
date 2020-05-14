@@ -10,4 +10,11 @@
 </head>
 <body>
     <div id="container">
+        <nav>
+            <h1>Get your workshop!</h1>
+            <ul>
+                <a href="login.php"><li>sign in</li></a>
+                <a href="register.php"><li>sign up</li></a>
+            </ul>
+        </nav>
         <main>

@@ -5,11 +5,5 @@
                 </p>
             </footer>
         </div>
-            <nav>
-                <ul>
-                    <a href="login.php"><li>sign in</li></a>
-                    <a href="register.php"><li>sign up</li></a>
-                </ul>
-            </nav>
     </body>
 </html>
