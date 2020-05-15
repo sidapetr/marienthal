@@ -1,6 +1,6 @@
 <?php
-require_once 'db.php';
-include 'header.php';
+require_once 'inc/db.php';
+include 'inc/header.php';
 $pageTitle = 'main page';
 ?>
 
@@ -16,4 +16,4 @@ $pageTitle = 'main page';
     Maecenas sollicitudin justo nec dolor commodo rhoncus. Donec commodo, risus at convallis pretium, mauris nunc ultrices lectus, id posuere neque mi venenatis turpis. Nulla aliquam orci in nisi dictum, cursus porta urna imperdiet. Aliquam venenatis imperdiet consequat. Maecenas vitae elit nec nibh vulputate iaculis non sed massa. Nulla facilisi. Aliquam sed odio nec nunc pellentesque dictum consectetur in ex. Ut quis metus vel ipsum semper blandit id et sapien.</p>
 
 <?php
-include 'footer.php';
+include 'inc/footer.php';

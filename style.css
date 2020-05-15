@@ -1,12 +1,9 @@
-html body{
+body{
     display: block;
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
-}
-
-body{
     color: black;
     background-color: white;
     min-width: 400px;
@@ -56,6 +53,21 @@ main{
     display: block;
     border: 1px solid lightgray;
     padding: 50px 20px;
+}
+
+#registration{
+    display: block;
+    text-align: center;
+}
+
+#registration form{
+    display: inline-block;
+    margin: 0 auto;
+    text-align: left;
+}
+
+label{
+    display: block;
 }
 
 footer{
