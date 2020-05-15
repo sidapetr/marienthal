@@ -2,7 +2,7 @@
 session_start();
 
 require_once 'db.php';
-require_once __DIR__.'../vendor/autoload.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
 if(!empty($_SESSION['user_id'])){
     $kontrolaPrihlaseni=$db->prepare('SELECT id FROM user WHERE id=:id LIMIT=1;');
