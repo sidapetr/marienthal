@@ -5,7 +5,7 @@ require_once 'db.php';
 require_once __DIR__.'/../vendor/autoload.php';
 
 if(!empty($_SESSION['user_id'])){
-    $kontrolaPrihlaseni=$db->prepare('SELECT id FROM user WHERE id=:id LIMIT=1;');
+    $kontrolaPrihlaseni=$db->prepare('SELECT id FROM mt_user WHERE id=:id LIMIT 1;');
     $kontrolaPrihlaseni->execute([':id' => $_SESSION['user_ID']]);
     if($kontrolaPrihlaseni->rowCount()!=1){
         unset($_SESSION['user_ID']);

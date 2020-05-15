@@ -13,8 +13,17 @@
         <nav>
             <h1>Get your workshop!</h1>
             <ul>
-                <a href="login.php"><li>sign in</li></a>
-                <a href="register.php"><li>sign up</li></a>
+            <?php
+            if(isset($_SESSION['user_name'])){
+                echo ('<li>logged in as '.$_SESSION['user_name'].'</li>
+                       <a href="logout.php"><li>logout</li></a>');
+            }else{
+                echo ('<a href="login.php"><li>sign in</li></a>
+                       <a href="register.php"><li>sign up</li></a>');
+            }
+            ?>
+
+
             </ul>
         </nav>
         <main>

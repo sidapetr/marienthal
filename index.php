@@ -3,7 +3,7 @@ require_once 'inc/db.php';
 include 'inc/header.php';
 $pageTitle = 'main page';
 ?>
-
+    <h2>header 2</h2>
 
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nunc neque, dictum quis rutrum sit amet, tincidunt eu nulla. Pellentesque elementum massa vitae pharetra viverra. Nulla tempor at lorem quis pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur lobortis tincidunt est tincidunt elementum. Donec feugiat eu ligula non feugiat. Suspendisse vel ligula vehicula, mollis felis et, venenatis nisi. Suspendisse malesuada metus rhoncus nisi maximus, at fermentum libero aliquam. Curabitur commodo mattis volutpat. Nullam eu mi a elit venenatis bibendum sit amet in ligula. Nunc tempor ante purus, sit amet dignissim eros porta sed. Vivamus feugiat turpis eget dapibus sodales. Proin faucibus, felis vel sollicitudin mattis, nulla velit ullamcorper arcu, ut finibus est ligula ut erat. Donec pellentesque egestas lorem eu facilisis. Nam non feugiat felis, vitae ultrices enim. Aenean odio urna, congue vel iaculis non, varius pretium metus.
 
