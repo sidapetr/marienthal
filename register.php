@@ -19,7 +19,7 @@ if(isset($_SESSION['user_id'])){
         if(!filter_var($mail,FILTER_VALIDATE_EMAIL)){
             $errors['mail']='E-mail is empty or invalid';
         }else{
-            $mailCheck=$db->prepare('SELECT * FROM user WHERE mail-:mail LIMIT 1;');
+            $mailCheck=$db->prepare('SELECT * FROM mt_user WHERE email=:mail LIMIT 1;');
             $mailCheck->execute([':mail'=>$mail]);
             if($mailCheck->rowCount()!=0){
                 $errors['mail']='An account associated with this e-mail adress already exists.';
@@ -52,11 +52,10 @@ if(isset($_SESSION['user_id'])){
             $_SESSION['user_id']=$db->lastInsertId();
             $_SESSION['user_name']=$name;
             $_SESSION['user_role']='student';
+
+            header('Location: index.php');
+            exit();
         }
-
-        header('Location: index.php');
-        exit();
-
     }
 }
 
@@ -78,7 +77,7 @@ if(isset($_SESSION['user_id'])){
         </div>
         <div>
             <label for="country">Choose your country:</label>
-            <select id="country" required>
+            <select name="country" required>
                 <option value="BIH">Bosnia and Herzegovina</option>
                 <option value="CZE">Czech Republic</option>
                 <option value="DEU">Germany</option>
@@ -96,11 +95,11 @@ if(isset($_SESSION['user_id'])){
         </div>
         <div>
             <label for="passwd">Password (minimal lenght 6)</label>
-            <input type="password" required>
+            <input type="password" name="passwd" required>
         </div>
         <div>
             <label for="passwd2">Retype your password</label>
-            <input type="password" required>
+            <input type="password" name="passwd2" required>
         </div>
         <input type="submit" value="Register">
         <a href="index.php">Cancel</a>
