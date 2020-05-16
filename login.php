@@ -28,14 +28,12 @@ if(!empty($_POST)){
     }
 }
 
-/*TODO: vypisovani chyby pod formular
-        zapomenute heslo
-        facebook link
-        mazani forgotten passwd timestampu z DB
+/*TODO: mazani forgotten passwd timestampu z DB
 */
 ?>
 
 <h2>Sign in</h2>
+    <a href="facebookLogin.php">Log in with facebook instead</a>
 <form method="post">
     <div>
         <label for="mail">e-mail</label>
@@ -45,9 +43,16 @@ if(!empty($_POST)){
         <label for="passwd">password</label>
         <input name="passwd" type="password" required>
     </div>
+    <?php
+        if(@$errors){
+            echo ('<div class="formError">
+                        A combination of e-mail and password is incorrect.
+                        <a href="forgottenPassword.php">Forgot your password?</a>
+                    </div>');
+        }
+    ?>
     <input type="submit" value="log in">
     <a href="index.php">cancel</a>
-    <a href="">Log in with facebook instead</a>
 </form>
 <div>
     Don't have an account? <a href="register.php">Sign up</a>

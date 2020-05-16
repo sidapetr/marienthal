@@ -66,6 +66,10 @@ main{
     text-align: left;
 }
 
+.formError {
+    color: red;
+}
+
 label{
     display: block;
 }

@@ -59,7 +59,7 @@ if(isset($_SESSION['user_id'])){
     }
 }
 
-//TODO: vypsat chyby do formulare a oznacit chybna pole
+//TODO: otestovat zadani chyby do formulare
 
 ?>
 <section id="registration">
@@ -73,34 +73,49 @@ if(isset($_SESSION['user_id'])){
     <form method="post">
         <div>
             <label for="name">Name and surname</label>
-            <input type="text" name="name" required>
+            <input type="text" name="name" required value="<?php echo htmlspecialchars(@$name); ?>">
         </div>
+        <?php
+            echo(empty($errors['name']))?'':'<div class="formError">'.$errors['name'].'</div>';
+        ?>
         <div>
             <label for="country">Choose your country:</label>
             <select name="country" required>
-                <option value="BIH">Bosnia and Herzegovina</option>
-                <option value="CZE">Czech Republic</option>
-                <option value="DEU">Germany</option>
-                <option value="ITA">Italy</option>
-                <option value="LVA">Latvia</option>
-                <option value="LTU">Lithuania</option>
-                <option value="POL">Poland</option>
-                <option value="ESP">Spain</option>
-                <option value="SWE">Sweeden</option>
+                <option value="BIH" <?php echo (@$country=='BIH')?'selected="selected"':'' ?>>Bosnia and Herzegovina</option>
+                <option value="CZE" <?php echo (@$country=='CZE')?'selected="selected"':'' ?>>Czech Republic</option>
+                <option value="DEU" <?php echo (@$country=='DEU')?'selected="selected"':'' ?>>Germany</option>
+                <option value="ITA" <?php echo (@$country=='ITA')?'selected="selected"':'' ?>>Italy</option>
+                <option value="LVA" <?php echo (@$country=='LVA')?'selected="selected"':'' ?>>Latvia</option>
+                <option value="LTU" <?php echo (@$country=='LTU')?'selected="selected"':'' ?>>Lithuania</option>
+                <option value="POL" <?php echo (@$country=='POL')?'selected="selected"':'' ?>>Poland</option>
+                <option value="ESP" <?php echo (@$country=='ESP')?'selected="selected"':'' ?>>Spain</option>
+                <option value="SWE" <?php echo (@$country=='SWE')?'selected="selected"':'' ?>>Sweeden</option>
             </select>
         </div>
+        <?php
+        echo(empty($errors['country']))?'':'<div class="formError">'.$errors['country'].'</div>';
+        ?>
         <div>
             <label for="mail">e-mail</label>
-            <input type="email" name="mail" required>
+            <input type="email" name="mail" required value="<?php echo htmlspecialchars(@$mail); ?>">
         </div>
+        <?php
+        echo(empty($errors['mail']))?'':'<div class="formError">'.$errors['mail'].'</div>';
+        ?>
         <div>
             <label for="passwd">Password (minimal lenght 6)</label>
             <input type="password" name="passwd" required>
         </div>
+        <?php
+        echo(empty($errors['passwd']))?'':'<div class="formError">'.$errors['passwd'].'</div>';
+        ?>
         <div>
             <label for="passwd2">Retype your password</label>
             <input type="password" name="passwd2" required>
         </div>
+        <?php
+        echo(empty($errors['passwd2']))?'':'<div class="formError">'.$errors['passwd2'].'</div>';
+        ?>
         <input type="submit" value="Register">
         <a href="index.php">Cancel</a>
     </form>
