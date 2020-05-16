@@ -14,8 +14,8 @@
             <h1>Get your workshop!</h1>
             <ul>
             <?php
-            if(isset($_SESSION['user_name'])){
-                echo ('<li>logged in as '.$_SESSION['user_name'].'</li>
+            if(isset($_SESSION['user_id'])){
+                echo ('<li>logged in as '.htmlspecialchars($_SESSION['user_name']).'</li>
                        <a href="logout.php"><li>logout</li></a>');
             }else{
                 echo ('<a href="login.php"><li>sign in</li></a>
