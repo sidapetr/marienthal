@@ -23,7 +23,7 @@ if(!empty($_POST['mail'])){
         $read->execute([':user_id'=>$user['id'],":code"=>$code]);
         $request=$read->fetch(PDO::FETCH_ASSOC);
 
-        $link='https://eso.vse.cz/~sidp00/marienthal/forgottenPassword.php';
+        $link='https://eso.vse.cz/~sidp00/marienthal/renewPassword.php';
         $link.='?user='.$request['user_id'].'&code='.$request['code'].'&request='.$request['id'];
 
         #endregion odkaz

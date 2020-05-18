@@ -17,7 +17,7 @@ if(!empty($_POST)){
             $_SESSION['user_name']=$user['name'];
             $_SESSION['user_role']=$user['role'];
 
-            $forgottenDelete = $db->prepare('DELETE FROM forgotten_passwords WHERE user_id = :user_id;');
+            $forgottenDelete = $db->prepare('DELETE FROM mt_forgotten_passwords WHERE user_id = :user_id;');
             $forgottenDelete ->execute([':user_id'=> $user['id']]);
 
             header('Location: index.php');
