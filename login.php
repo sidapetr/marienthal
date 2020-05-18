@@ -1,6 +1,5 @@
 <?php
 require_once 'inc/user.php';
-include 'inc/header.php';
 $pageTitle = 'login page';
 
 if(!empty($_SESSION['user_id'])){
@@ -18,6 +17,9 @@ if(!empty($_POST)){
             $_SESSION['user_name']=$user['name'];
             $_SESSION['user_role']=$user['role'];
 
+            $forgottenDelete = $db->prepare('DELETE FROM forgotten_passwords WHERE user_id = :user_id;');
+            $forgottenDelete ->execute([':user_id'=> $user['id']]);
+
             header('Location: index.php');
             exit();
         }else{
@@ -28,8 +30,7 @@ if(!empty($_POST)){
     }
 }
 
-/*TODO: mazani forgotten passwd timestampu z DB
-*/
+include 'inc/header.php';
 ?>
 
 <h2>Sign in</h2>

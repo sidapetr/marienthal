@@ -15,7 +15,7 @@
             <ul>
             <?php
             if(isset($_SESSION['user_id'])){
-                echo ('<li>logged in as '.htmlspecialchars($_SESSION['user_name']).'</li>
+                echo ('<li id="loggedAs">logged in as '.htmlspecialchars($_SESSION['user_name']).'</li>
                        <a href="logout.php"><li>logout</li></a>');
             }else{
                 echo ('<a href="login.php"><li>sign in</li></a>

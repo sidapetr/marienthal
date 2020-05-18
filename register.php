@@ -1,6 +1,5 @@
 <?php
 require_once 'inc/user.php';
-include 'inc/header.php';
 $pageTitle = 'registration page';
 
 if(isset($_SESSION['user_id'])){
@@ -61,6 +60,7 @@ if(isset($_SESSION['user_id'])){
 
 //TODO: otestovat zadani chyby do formulare
 
+include 'inc/header.php';
 ?>
 <section id="registration">
     <h2>Sign up</h2>
