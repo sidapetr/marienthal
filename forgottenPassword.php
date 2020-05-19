@@ -59,7 +59,7 @@ if(!empty($_POST['mail'])){
 include 'inc/header.php';
 ?>
 
-<h2>Password recovery</h2>
+<h1>Password recovery</h1>
 <?php
 if(@$_GET['mailed']=='mailed'){
     echo '<div>Please check your inbox to complete the password recovery process.</div>';

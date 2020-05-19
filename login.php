@@ -33,7 +33,7 @@ if(!empty($_POST)){
 include 'inc/header.php';
 ?>
 
-<h2>Sign in</h2>
+<h1>Sign in</h1>
     <a href="facebookLogin.php">Log in with facebook instead</a>
 <form method="post">
     <div>
@@ -53,7 +53,6 @@ include 'inc/header.php';
         }
     ?>
     <input type="submit" value="log in">
-    <a href="index.php">cancel</a>
 </form>
 <div>
     Don't have an account? <a href="register.php">Sign up</a>

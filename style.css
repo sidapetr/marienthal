@@ -7,6 +7,7 @@ body{
     color: black;
     background-color: white;
     min-width: 400px;
+    font-family: Tahoma, Geneva, sans-serif;
 }
 #container{
     display: block;
@@ -39,13 +40,18 @@ nav ul{
 nav li{
     display: inline-block;
     padding: 15px 10px 15px 10px;
-    font-size: 18px;
+    font-size: 16px;
 }
 nav li:hover{
     background-color: grey;
 }
 #loggedAs:hover{
     background-color: #24292e;
+}
+#choosen{
+    display: inline-block;
+    padding: 15px 10px 15px 10px;
+    font-size: 16px;
 }
 nav a{
     text-decoration: none;
@@ -55,7 +61,16 @@ nav a{
 main{
     display: block;
     border: 1px solid lightgray;
-    padding: 50px 20px;
+    padding: 50px 20px 15px 20px;
+}
+
+.icon{
+    display: inline-block;
+    margin: 5px;
+    border: 1px solid darkslategray;
+    background-color: lightgray;
+    width: 150px;
+    height: 150px;
 }
 
 #registration{

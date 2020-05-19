@@ -63,7 +63,7 @@ if(isset($_SESSION['user_id'])){
 include 'inc/header.php';
 ?>
 <section id="registration">
-    <h2>Sign up</h2>
+    <h1>Sign up</h1>
     <div>
         Already have an account? <a href="login.php">sign in</a>
     </div>

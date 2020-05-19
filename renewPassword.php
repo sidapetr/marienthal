@@ -53,7 +53,7 @@ if(!empty($_POST)&&!$codeError){
 include 'inc/header.php';
 ?>
 
-    <h2>Save new password</h2>
+    <h1>Save new password</h1>
     <?php
     if($codeError){
         echo '<div>Password recovery code timed out and is no longer valid.</div>
