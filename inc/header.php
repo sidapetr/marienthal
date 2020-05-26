@@ -24,10 +24,16 @@
                         <a href="logout.php"><li>logout</li></a>
                        </ul>');
             }else{
+                require_once 'facebook.php';
+                $fbHelper = $fb->getRedirectLoginHelper();  //helper pro vytvoreni odkazu
+                $permisions = ['email'];
+                $callbackUrl = htmlspecialchars('https://eso.vse.cz/~sidp00/marienthal/fb-callback.php');
+                $fbLoginUrl = $fbHelper->getLoginUrl($callbackUrl, $permisions);
                 echo ('<h1>Marienthal workshops</h1>
                        <ul>
                            <a href="login.php"><li>sign in</li></a>
-                        <a href="register.php"><li>sign up</li></a>
+                           <a href="'.$fbLoginUrl.'"><li>sign in with facebook</li></a>
+                           <a href="register.php"><li>sign up</li></a>
                        </ul>');
             }
             ?>
