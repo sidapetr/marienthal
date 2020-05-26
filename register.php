@@ -51,6 +51,7 @@ if(isset($_SESSION['user_id'])){
             $_SESSION['user_id']=$db->lastInsertId();
             $_SESSION['user_name']=$name;
             $_SESSION['user_role']='student';
+            $_SESSION['user_nation']=$country;
 
             header('Location: index.php');
             exit();

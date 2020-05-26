@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa7d240cc2d3ff746637b56db5591226",
+    "content-hash": "45db73ade3c174d9db337537e1540075",
     "packages": [
         {
             "name": "facebook/graph-sdk",
@@ -63,58 +63,6 @@
                 "sdk"
             ],
             "time": "2018-12-11T22:56:31+00:00"
-        },
-        {
-            "name": "lam/facebook-graph-sdk",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Jessielam/facebook-sdk.git",
-                "reference": "481c3b8292678c312dd8e09a3630b7c0ef673f0c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Jessielam/facebook-sdk/zipball/481c3b8292678c312dd8e09a3630b7c0ef673f0c",
-                "reference": "481c3b8292678c312dd8e09a3630b7c0ef673f0c",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.0"
-            },
-            "require-dev": {
-                "guzzlehttp/guzzle": "~5.0",
-                "mockery/mockery": "~0.8",
-                "phpunit/phpunit": "~4.0"
-            },
-            "suggest": {
-                "guzzlehttp/guzzle": "Allows for implementation of the Guzzle HTTP client",
-                "paragonie/random_compat": "Provides a better CSPRNG option in PHP 5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Facebook\\": "src/Facebook/"
-                },
-                "files": [
-                    "src/Facebook/polyfills.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "LAM"
-                }
-            ],
-            "description": "Facebook SDK for PHP",
-            "homepage": "https://github.com/facebook/php-graph-sdk",
-            "keywords": [
-                "facebook",
-                "sdk"
-            ],
-            "time": "2018-03-13T03:24:55+00:00"
         },
         {
             "name": "phpmailer/phpmailer",

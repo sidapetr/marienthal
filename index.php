@@ -5,6 +5,9 @@ $pageTitle = 'main page';
 if(!isset($_SESSION['user_id'])){
     header('Location:login.php');
     exit();
+}elseif (!isset($_SESSION['user_nation'])){
+    header('Location:setNation.php');
+    exit();
 }else{
     $workshopQuery=$db->prepare('SELECT * FROM mt_workshop WHERE seminar_year=:year;');
     $workshopQuery->execute([':year'=>date("Y")]);

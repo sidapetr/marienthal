@@ -7,6 +7,12 @@ if(!empty($_SESSION['user_id'])){
     exit();
 }
 
+require_once 'inc/facebook.php';
+$fbHelper = $fb->getRedirectLoginHelper();  //helper pro vytvoreni odkazu
+$permisions = ['email'];
+$callbackUrl = htmlspecialchars('https://eso.vse.cz/~sidp00/marienthal/fb-callback.php');
+$fbLoginUrl = $fbHelper->getLoginUrl($callbackUrl, $permisions);
+
 if(!empty($_POST)){
     $errors=false;
     $login=$db->prepare('SELECT * FROM mt_user WHERE email=:mail LIMIT 1;');
@@ -16,6 +22,9 @@ if(!empty($_POST)){
             $_SESSION['user_id']=$user['id'];
             $_SESSION['user_name']=$user['name'];
             $_SESSION['user_role']=$user['role'];
+            if($user['nation']!="FB"){
+                $_SESSION['user_nation']=$user['nation'];
+            }
 
             $forgottenDelete = $db->prepare('DELETE FROM mt_forgotten_passwords WHERE user_id = :user_id;');
             $forgottenDelete ->execute([':user_id'=> $user['id']]);
@@ -34,7 +43,7 @@ include 'inc/header.php';
 ?>
 
 <h1>Sign in</h1>
-    <a href="facebookLogin.php">Log in with facebook instead</a>
+    <a href="<?php echo $fbLoginUrl;?>">Log in with facebook instead</a>
 <form method="post">
     <div>
         <label for="mail">e-mail</label>
