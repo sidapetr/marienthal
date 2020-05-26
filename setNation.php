@@ -32,7 +32,7 @@ if(!empty($_POST)){
 
     if(empty($errors)){
         $registration=$db->prepare('UPDATE mt_user SET nation=:nation WHERE id=:id LIMIT 1;');
-        $registration->execute([':country'=>$country, ':id'=>$user['id']]);
+        $registration->execute([':nation'=>$country, ':id'=>$user['id']]);
 
         $_SESSION['user_nation']=$country;
 
@@ -42,7 +42,7 @@ if(!empty($_POST)){
 }
 
 
-
+include 'inc/header.php';
 ?>
 <h2>Select your country to finnish the registration</h2>
     <form method="post">
@@ -64,7 +64,6 @@ if(!empty($_POST)){
         echo(empty($errors['country']))?'':'<div class="formError">'.$errors['country'].'</div>';
         ?>
         <input type="submit" value="Register">
-        <a href="index.php">Cancel</a>
     </form>
 <?php
 include 'inc/footer.php';
