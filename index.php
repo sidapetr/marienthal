@@ -17,6 +17,9 @@ if(!isset($_SESSION['user_id'])){
     foreach ($workshops as $workshop){
         echo '<a href="workshop.php?id='.$workshop['id'].'"><div class="icon">'.$workshop['name'].'</div></a>';
     }
+    if($_SESSION['user_role']!="student"){
+        echo '<a href="new.php"><div class="icon newWorkshop">Add new</div></a>';
+    }
 }
 
 include 'inc/footer.php';
