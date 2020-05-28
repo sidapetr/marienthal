@@ -42,7 +42,7 @@ include 'inc/header.php';
     ?>
     <div>
         <label for="description">Description</label>
-        <input type="text" name="description" required value="<?php echo htmlspecialchars(@$description); ?>">
+        <textarea name="description" required><?php echo htmlspecialchars(@$description); ?></textarea>
     </div>
     <?php
     echo(empty($errors['description']))?'':'<div class="formError">'.$errors['description'].'</div>';

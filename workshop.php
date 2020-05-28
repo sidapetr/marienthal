@@ -6,8 +6,12 @@ if(!empty($_GET['id'])){
     $workshopQuery = $db->prepare('SELECT * FROM mt_workshop WHERE id=:workshop;');
     $workshopQuery->execute([':workshop'=>$_GET['id']]);
     $workshop = $workshopQuery->fetch(PDO::FETCH_ASSOC);
-    echo '<h2>'.htmlspecialchars($workshop['name']).'</h2>
-          <p class="description">'.htmlspecialchars($workshop['description']).'</p>';
+    echo '<h2>'.htmlspecialchars($workshop['name']).'</h2>';
+
+    if($workshop['leader_id']==$_SESSION['user_id']){
+        echo '<a href="edit.php?id='.$workshop['id'].'">Edit</a>';
+    }
+    echo '<p class="description">'.htmlspecialchars($workshop['description']).'</p>';
 
     if(!empty($_POST)){
         $errors = [];
@@ -33,11 +37,12 @@ if(!empty($_GET['id'])){
                                    ':workshop'=>$workshop['id'],
                                    ':capacity'=>$capacity,
                                    ':note'=>$note]);
+            unset($capacity);
+            unset($name);
+            unset($description);
+            unset($note);
         }
     }
-
-    //TODO: vypis chyb pod formularova pole
-    //TODO: otestovat vlozeni nove role
 
     if(isset($_SESSION['user_id'])&&($workshop['leader_id']==$_SESSION['user_id'])){
         echo '
@@ -46,14 +51,17 @@ if(!empty($_GET['id'])){
             <div>
                 <label for="capacity">Capacity</label>
                 <input type="number" name="capacity" required value="'.htmlspecialchars(@$capacity).'">
+                <div class="formError">'.@$errors['capacity'].'</div>
             </div>
             <div>
                 <label for="name">Name</label>
                 <input type="text" name="name" required value="'.htmlspecialchars(@$name).'">
+                <div class="formError">'.@$errors['name'].'</div>
             </div>
             <div>
                 <label for="description">Description</label>
                 <textarea name="description" required>'.htmlspecialchars(@$description).'</textarea>
+                <div class="formError">'.@$errors['description'].'</div>
             </div>
             <div>
                 <label for="note">Note</label>
