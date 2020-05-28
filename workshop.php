@@ -79,18 +79,21 @@ if(!empty($_GET['id'])){
         echo '<h3>Current roles</h3>
               <table class="roles">
                 <tr>
+                    <th>Capacity</th>
                     <th>Workshop role</th>
                     <th>Description</th>
-                    <th>Capacity</th>
                     <th>Note</th>
                 </tr>';
         foreach ($roles as $role){
             echo '<tr>
+                    <td>'.htmlspecialchars($role['capacity']).'</td>
                     <td>'.htmlspecialchars($role['name']).'</td>
                     <td>'.htmlspecialchars($role['description']).'</td>
-                    <td>'.htmlspecialchars($role['capacity']).'</td>
-                    <td>'.htmlspecialchars($role['note']).'</td>
-                  </tr>';
+                    <td>'.htmlspecialchars($role['note']).'</td>';
+                if($workshop['leader_id']==$_SESSION['user_id']){
+                    echo '<td><a href="editRole.php?id='.$role['id'].'">edit</a></td>';
+                }
+            echo '</tr>';
         }
         echo '</table>';
     } else {
