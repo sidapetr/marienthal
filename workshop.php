@@ -1,5 +1,11 @@
 <?php
 require_once 'inc/user.php';
+
+if(!isset($_SESSION['user_id'])){
+    header('Location: index.php');
+    exit();
+}
+
 $pageTitle = 'workshop details page';
 include 'inc/header.php';
 if(!empty($_GET['id'])){
@@ -92,6 +98,10 @@ if(!empty($_GET['id'])){
                     <td>'.htmlspecialchars($role['note']).'</td>';
                 if($workshop['leader_id']==$_SESSION['user_id']){
                     echo '<td><a href="editRole.php?id='.$role['id'].'">edit</a></td>';
+                }
+                if($_SESSION['user_role']=="student"){
+                    echo '<td><a href="assign.php?id='.$role['id'].'&no=1">assign 1st</a></td>';
+                    echo '<td><a href="assign.php?id='.$role['id'].'&no=2">assign 2nd</a></td>';
                 }
             echo '</tr>';
         }
