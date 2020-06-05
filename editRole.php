@@ -68,7 +68,7 @@ include 'inc/header.php';
             <div class="formError"><?php echo @$errors['description'];?></div>
         </div>
         <div>
-            <label for="note">Note</label>
+            <label for="note">Question</label>
             <textarea name="note"><?php echo htmlspecialchars(@$role['note']);?></textarea>
         </div>
         <input type="submit" value="Save">

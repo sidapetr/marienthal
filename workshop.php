@@ -37,7 +37,7 @@ if(!empty($_GET['id'])){
         if(empty($errors)){
             $createQuery = $db->prepare(
                 'INSERT INTO mt_role (name, workshop_id, description, capacity, note) 
-                                        VALUES(:name, :workshop, :description, :capacity, :note)');
+                                        VALUES(:name, :workshop, :description, :capacity, :note);');
             $createQuery->execute([':name'=>$name,
                                    ':description'=>$description,
                                    ':workshop'=>$workshop['id'],
@@ -50,7 +50,7 @@ if(!empty($_GET['id'])){
         }
     }
 
-    if(isset($_SESSION['user_id'])&&($workshop['leader_id']==$_SESSION['user_id'])){
+    if(($workshop['leader_id']==$_SESSION['user_id'])){
         echo '
         <h3>Add new role</h3>
         <form method="post" id="addRole">
@@ -70,7 +70,7 @@ if(!empty($_GET['id'])){
                 <div class="formError">'.@$errors['description'].'</div>
             </div>
             <div>
-                <label for="note">Note</label>
+                <label for="note">Question</label>
                 <textarea name="note">'.htmlspecialchars(@$note).'</textarea>
             </div>
             <input type="submit" value="Add">
@@ -82,38 +82,69 @@ if(!empty($_GET['id'])){
     $roleQuery->execute([':workshop'=>$_GET['id']]);
     if($roleQuery->rowCount()>0){
         $roles = $roleQuery->fetchAll(PDO::FETCH_ASSOC);
-        echo '<h3>Current roles</h3>
-              <table class="roles">
+
+        if($workshop['leader_id']==$_SESSION['user_id']){
+            echo '<h3>Current roles</h3>
+                  <table class="roles">
+                    <tr>
+                        <th>Capacity</th>
+                        <th>Workshop role</th>
+                        <th>Description</th>
+                        <th>Question</th>
+                    </tr>';
+            foreach ($roles as $role){
+                echo '
                 <tr>
-                    <th>Capacity</th>
-                    <th>Workshop role</th>
-                    <th>Description</th>
-                    <th>Note</th>
-                </tr>';
-        foreach ($roles as $role){
-            echo '<tr>
                     <td>'.htmlspecialchars($role['capacity']).'</td>
                     <td>'.htmlspecialchars($role['name']).'</td>
                     <td>'.htmlspecialchars($role['description']).'</td>
-                    <td>'.htmlspecialchars($role['note']).'</td>';
-                if($workshop['leader_id']==$_SESSION['user_id']){
-                    echo '<td><a href="editRole.php?id='.$role['id'].'">edit</a></td>';
-                }
-                if($_SESSION['user_role']=="student"){
-                    echo '<td><a href="assign.php?id='.$role['id'].'&no=1">assign 1st</a></td>';
-                    echo '<td><a href="assign.php?id='.$role['id'].'&no=2">assign 2nd</a></td>';
-                }
-            echo '</tr>';
+                    <td>'.htmlspecialchars($role['note']).'</td>
+                    <td><a href="editRole.php?id='.$role['id'].'">edit</a></td>
+                </tr>';
+            }
+        }elseif ($_SESSION['user_role']=="student"){
+            echo '<h3>Current roles</h3>
+                  <table class="roles">
+                    <tr>
+                        <th>Capacity</th>
+                        <th>Workshop role</th>
+                        <th>Description</th>
+                    </tr>';
+            foreach ($roles as $role){
+                echo '
+                <tr>
+                    <td>'.htmlspecialchars($role['capacity']).'</td>
+                    <td>'.htmlspecialchars($role['name']).'</td>
+                    <td>'.htmlspecialchars($role['description']).'</td>
+                    <td><a href="assign.php?id='.$role['id'].'&no=1">assign 1st</a></td>
+                    <td><a href="assign.php?id='.$role['id'].'&no=2">assign 2nd</a></td>
+                </tr>';
+            }
+        }else{                              //other leaders and admin
+            echo '<h3>Current roles</h3>
+                  <table class="roles">
+                    <tr>
+                        <th>Capacity</th>
+                        <th>Workshop role</th>
+                        <th>Description</th>
+                    </tr>';
+            foreach ($roles as $role){
+                echo '
+                <tr>
+                    <td>'.htmlspecialchars($role['capacity']).'</td>
+                    <td>'.htmlspecialchars($role['name']).'</td>
+                    <td>'.htmlspecialchars($role['description']).'</td>
+                </tr>';
+            }
         }
         echo '</table>';
     } else {
         echo '<h3>Current roles</h3>
               There are no roles for this workshop yet.';
     }
+}else{
+    header('Location: index.php');
+    exit();
 }
 
-//TODO: stránka se zobrazením detailu worshopu včetně výpisu rolí
-?>
-
-<?php
 include 'inc/footer.php';

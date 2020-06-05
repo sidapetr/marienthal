@@ -18,8 +18,15 @@
                 $query->execute([':id'=>$_SESSION['user_id']]);
                 $user=$query->fetch(PDO::FETCH_ASSOC);
                 if($_SESSION['user_role']=="student"){
-                    echo '<span id="choosen">my workshops: prefered - '.htmlspecialchars($user['w_prefered']).
-                        '| alternative - '.htmlspecialchars($user['w_alternative']).'</span>';
+                    $query=$db->prepare(
+                        'SELECT pref.name as prefered, alt.name as alternative FROM mt_user as user 
+                                    left join mt_role as pref on (user.w_prefered=pref.id) 
+                                    left join mt_role as alt on (user.w_alternative=alt.id)
+                                    WHERE user.id=:id;');
+                    $query->execute([':id'=>$_SESSION['user_id']]);
+                    $user=$query->fetch(PDO::FETCH_ASSOC);
+                    echo '<span id="choosen">my workshops: prefered - '.htmlspecialchars($user['prefered']).
+                        '| alternative - '.htmlspecialchars($user['alternative']).'</span>';
                 }
                 echo '<ul>
                         <li id="loggedAs">logged in as '.htmlspecialchars($_SESSION['user_name']).'</li>
