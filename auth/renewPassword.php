@@ -1,9 +1,9 @@
 <?php
-require_once 'inc/user.php';
+require_once '../inc/user.php';
 $pageTitle = 'password renew page';
 
 if(!empty($_SESSION['user_id'])){
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 $errors=[];
@@ -45,19 +45,19 @@ if(!empty($_POST)&&!$codeError){
         $_SESSION['user_name']=$user['name'];
         $_SESSION['user_role']=$user['role'];
 
-        header('Location: index.php');
+        header('Location: ../index.php');
         exit();
     }
 }
 
-include 'inc/header.php';
+include '../inc/header.php';
 ?>
 
     <h1>Save new password</h1>
     <?php
     if($codeError){
         echo '<div>Password recovery code timed out and is no longer valid.</div>
-              <a href="index.php">Back to homepage</a>';
+              <a href="../index.php">Back to homepage</a>';
     }else{
     ?>
         <form method="post">
@@ -76,11 +76,11 @@ include 'inc/header.php';
             echo(empty($errors['passwd2']))?'':'<div class="formError">'.$errors['passwd2'].'</div>';
             ?>
             <input type="submit" value="Save">
-            <a href="index.php">Cancel</a>
+            <a href="../index.php">Cancel</a>
         </form>
         <?php
         }
         ?>
 
 <?php
-include 'inc/footer.php';
+include '../inc/footer.php';

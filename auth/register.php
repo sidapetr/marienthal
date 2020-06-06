@@ -1,9 +1,9 @@
 <?php
-require_once 'inc/user.php';
+require_once '../inc/user.php';
 $pageTitle = 'registration page';
 
 if(isset($_SESSION['user_id'])){
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }else{
     $errors=[];
@@ -53,7 +53,7 @@ if(isset($_SESSION['user_id'])){
             $_SESSION['user_role']='student';
             $_SESSION['user_nation']=$country;
 
-            header('Location: index.php');
+            header('Location: ../index.php');
             exit();
         }
     }
@@ -61,7 +61,7 @@ if(isset($_SESSION['user_id'])){
 
 //TODO: otestovat zadani chyby do formulare
 
-include 'inc/header.php';
+include '../inc/header.php';
 ?>
 <section id="registration">
     <h1>Sign up</h1>
@@ -118,10 +118,10 @@ include 'inc/header.php';
         echo(empty($errors['passwd2']))?'':'<div class="formError">'.$errors['passwd2'].'</div>';
         ?>
         <input type="submit" value="Register">
-        <a href="index.php">Cancel</a>
+        <a href="../index.php">Cancel</a>
     </form>
 </section>
 
 
 <?php
-include 'inc/footer.php';
+include '../inc/footer.php';

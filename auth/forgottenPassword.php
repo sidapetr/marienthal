@@ -1,10 +1,10 @@
 <?php
-require_once 'inc/user.php';
+require_once '../inc/user.php';
 $pageTitle = 'password recovery page';
 use PHPMailer\PHPMailer\PHPMailer;
 
 if(!empty($_SESSION['user_id'])){
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 
@@ -56,14 +56,14 @@ if(!empty($_POST['mail'])){
     }
 }
 
-include 'inc/header.php';
+include '../inc/header.php';
 ?>
 
 <h1>Password recovery</h1>
 <?php
 if(@$_GET['mailed']=='mailed'){
     echo '<div>Please check your inbox to complete the password recovery process.</div>';
-    echo '<a href="index.php">Back to the homepage</a>';
+    echo '<a href="../index.php">Back to the homepage</a>';
 }else{
 ?>
     <form method="post" id="forgotten">
@@ -74,7 +74,7 @@ if(@$_GET['mailed']=='mailed'){
         <?php echo (@$error?'<div>Invalid e-mail</div>':'');?>
         <input type="submit" value="Submit">
         <a href="login.php">Login</a>
-        <a href="index.php">Cancel</a>
+        <a href="../index.php">Cancel</a>
     </form>
 <?php
 }
@@ -82,4 +82,4 @@ if(@$_GET['mailed']=='mailed'){
 
 
 <?php
-include 'inc/footer.php';
+include '../inc/footer.php';

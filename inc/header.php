@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="sidp00">
     <meta name="keywords" content="Marienthal, intercultural, seminar, workshop">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://eso.vse.cz/~sidp00/marienthal/style.css">
 </head>
 <body>
     <div id="container">
@@ -29,14 +29,15 @@
                         '| alternative - '.htmlspecialchars($user['alternative']).'</span>';
                 }
                 echo '<ul>
-                        <li id="loggedAs">logged in as '.htmlspecialchars($_SESSION['user_name']).'</li>
-                        <a href="logout.php"><li>logout</li></a>
+                        <a href="https://eso.vse.cz/~sidp00/marienthal/"><li>Main page</li></a>
+                        <li id="loggedAs">logged as '.htmlspecialchars($_SESSION['user_name']).'</li>
+                        <a href="https://eso.vse.cz/~sidp00/marienthal/auth/logout.php"><li>logout</li></a>
                        </ul>';
             }else{
                 echo '<h1>Marienthal workshops</h1>
                        <ul>
-                           <a href="login.php"><li>sign in</li></a>
-                           <a href="register.php"><li>sign up</li></a>
+                           <a href="https://eso.vse.cz/~sidp00/marienthal/auth/login.php"><li>sign in</li></a>
+                           <a href="https://eso.vse.cz/~sidp00/marienthal/auth/register.php"><li>sign up</li></a>
                        </ul>';
             }
             ?>

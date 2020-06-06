@@ -1,16 +1,16 @@
 <?php
-require_once 'inc/user.php';
+require_once '../inc/user.php';
 $pageTitle = 'login page';
 
 if(!empty($_SESSION['user_id'])){
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 
-require_once 'inc/facebook.php';
+require_once '../inc/facebook.php';
 $fbHelper = $fb->getRedirectLoginHelper();  //helper pro vytvoreni odkazu
 $permisions = ['email'];
-$callbackUrl = htmlspecialchars('https://eso.vse.cz/~sidp00/marienthal/fb-callback.php');
+$callbackUrl = htmlspecialchars('https://eso.vse.cz/~sidp00/marienthal/auth/fb-callback.php');
 $fbLoginUrl = $fbHelper->getLoginUrl($callbackUrl, $permisions);
 
 if(!empty($_POST)){
@@ -29,7 +29,7 @@ if(!empty($_POST)){
             $forgottenDelete = $db->prepare('DELETE FROM mt_forgotten_passwords WHERE user_id = :user_id;');
             $forgottenDelete ->execute([':user_id'=> $user['id']]);
 
-            header('Location: index.php');
+            header('Location: ../index.php');
             exit();
         }else{
             $errors=true;
@@ -39,7 +39,7 @@ if(!empty($_POST)){
     }
 }
 
-include 'inc/header.php';
+include '../inc/header.php';
 ?>
 
 <h1>Sign in</h1>
@@ -69,4 +69,4 @@ include 'inc/header.php';
 
 
 <?php
-include 'inc/footer.php';
+include '../inc/footer.php';

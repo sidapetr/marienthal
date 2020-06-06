@@ -1,9 +1,9 @@
 <?php
-require_once 'inc/user.php';
+require_once '../inc/user.php';
 $pageTitle = 'Country selection page';
 
 if(isset($_SESSION['user_nation'])){
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 
@@ -13,7 +13,7 @@ if($userQuery->rowCount()!=1) {                         //prihlaseny uzivatel ne
     unset($_SESSION['user_id']);
     unset($_SESSION['user_name']);
     unset($_SESSION['user_role']);
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }else{
     $user = $userQuery->fetch(PDO::FETCH_ASSOC);
@@ -36,13 +36,13 @@ if(!empty($_POST)){
 
         $_SESSION['user_nation']=$country;
 
-        header('Location: index.php');
+        header('Location: ../index.php');
         exit();
     }
 }
 
 
-include 'inc/header.php';
+include '../inc/header.php';
 ?>
 <h2>Select your country to finnish the registration</h2>
     <form method="post">
@@ -66,4 +66,4 @@ include 'inc/header.php';
         <input type="submit" value="Register">
     </form>
 <?php
-include 'inc/footer.php';
+include '../inc/footer.php';

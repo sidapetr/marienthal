@@ -15,7 +15,9 @@ if(!empty($_GET['id'])){
     echo '<h2>'.htmlspecialchars($workshop['name']).'</h2>';
 
     if($workshop['leader_id']==$_SESSION['user_id']){
-        echo '<a href="edit.php?id='.$workshop['id'].'">Edit</a>';
+        echo '<a href="edit.php?id='.$workshop['id'].'"><div class="button">Edit</div></a>
+              <a href="list.php?id='.$workshop['id'].'"><div class="button">Applying students</div></a>
+              <a href="accepted.php?id='.$workshop['id'].'"><div class="button">Accepted students</div></a>';
     }
     echo '<p class="description">'.htmlspecialchars($workshop['description']).'</p>';
 
@@ -99,7 +101,7 @@ if(!empty($_GET['id'])){
                     <td>'.htmlspecialchars($role['name']).'</td>
                     <td>'.htmlspecialchars($role['description']).'</td>
                     <td>'.htmlspecialchars($role['note']).'</td>
-                    <td><a href="editRole.php?id='.$role['id'].'">edit</a></td>
+                    <td><a href="editRole.php?id='.$role['id'].'"><div class="button">edit</div></a></td>
                 </tr>';
             }
         }elseif ($_SESSION['user_role']=="student"){

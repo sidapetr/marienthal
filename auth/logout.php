@@ -1,5 +1,5 @@
 <?php
-require_once 'inc/user.php';
+require_once '../inc/user.php';
 $pageTitle = 'logout page';
 
 if(isset($_SESSION['user_id'])){
@@ -8,5 +8,5 @@ if(isset($_SESSION['user_id'])){
     unset($_SESSION['user_role']);
     unset($_SESSION['user_nation']);
 }
-header('Location: index.php');
+header('Location: ../index.php');
 exit();

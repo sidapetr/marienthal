@@ -1,6 +1,6 @@
 <?php
-require_once 'inc/user.php';
-require_once 'inc/facebook.php';
+require_once '../inc/user.php';
+require_once '../inc/facebook.php';
 
 $fbHelper = $fb->getRedirectLoginHelper();
 
@@ -62,4 +62,4 @@ if (!empty($user)){
     }
 }
 
-header('Location: index.php');
+header('Location: ../index.php');
