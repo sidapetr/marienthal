@@ -33,10 +33,10 @@ if (empty($_GET['id'])) {
                 </thead><tbody>';
     foreach ($students as $student) {
         echo '<tr>
-                    <td>' . $student['name'] . '</td>
-                    <td>' . $student['nation'] . '</td>
-                    <td>' . $student['workshop1'].' - '.$student['role1'] . '</td>
-                    <td>' . $student['workshop2'].' - '.$student['role2'] . '</td>
+                    <td>' .htmlspecialchars($student['name'])  . '</td>
+                    <td>' .htmlspecialchars($student['nation'])  . '</td>
+                    <td>' .htmlspecialchars($student['workshop1']) .' - '.htmlspecialchars($student['role1']) . '</td>
+                    <td>' .htmlspecialchars($student['workshop2']) .' - '.htmlspecialchars($student['role2']) . '</td>
                   </tr>';
     }
     echo '</tbody></table>';
@@ -56,10 +56,10 @@ if (empty($_GET['id'])) {
         $studentQuery->execute([':role'=>$role['id']]);
         $students = $studentQuery->fetchAll(PDO::FETCH_ASSOC);
         if(empty($students)){
-            echo '<h3>'.$role['name'].' ('.$role['capacity'].')'.'</h3>
+            echo '<h3>'.htmlspecialchars($role['name']).' ('.htmlspecialchars($role['capacity']).')'.'</h3>
               <p>There are no students accepted.</p>';
         }else{
-            echo '<h3>'.$role['name'].' ('.$role['capacity'].')'.'</h3>
+            echo '<h3>'.htmlspecialchars($role['name']).' ('.htmlspecialchars($role['capacity']).')'.'</h3>
         <table>
         <thead>
             <tr>
@@ -69,8 +69,8 @@ if (empty($_GET['id'])) {
         </thead><tbody>';
             foreach ($students as $student){
                 echo '<tr>
-                    <td>'.$student['name'].'</td>
-                    <td>'.$student['nation'].'</td>
+                    <td>'.htmlspecialchars($student['name']).'</td>
+                    <td>'.htmlspecialchars($student['nation']).'</td>
                   </tr>';
             }
             echo '</tbody></table>';

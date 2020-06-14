@@ -45,10 +45,10 @@ foreach ($roles as $role) {
     $studentQuery->execute([':role'=>$role['id']]);
     $students = $studentQuery->fetchAll(PDO::FETCH_ASSOC);
     if(empty($students)){
-        echo '<h3>'.$role['name'].' ('.$role['capacity'].')'.'</h3>
+        echo '<h3>'.htmlspecialchars($role['name']).' ('.htmlspecialchars($role['capacity']).')'.'</h3>
               <p>There are no students assigned for this workshop role yet.</p>';
     }else{
-        echo '<h3>'.$role['name'].' ('.$role['capacity'].')'.'</h3>
+        echo '<h3>'.htmlspecialchars($role['name']).' ('.htmlspecialchars($role['capacity']).')'.'</h3>
         <table>
         <thead>
             <tr>
@@ -88,10 +88,10 @@ foreach ($roles as $role) {
     $students = $studentQuery->fetchAll(PDO::FETCH_ASSOC);
 
     if(empty($students)){
-        echo '<h3>'.$role['name'].' ('.$role['capacity'].')'.'</h3>
+        echo '<h3>'.htmlspecialchars($role['name']).' ('.htmlspecialchars($role['capacity']).')'.'</h3>
               <p>There are no students assigned for this workshop role yet.</p>';
     }else{
-        echo '<h3>'.$role['name'].' ('.$role['capacity'].')'.'</h3>
+        echo '<h3>'.htmlspecialchars($role['name']).' ('.htmlspecialchars($role['capacity']).')'.'</h3>
 
         <table>
         <thead>

@@ -18,7 +18,7 @@ if(!isset($_SESSION['user_id'])){
     echo '<h1>Marienthal Workshops</h1>';
 
     foreach ($workshops as $workshop){
-        echo '<a href="workshop.php?id='.$workshop['id'].'"><div class="icon">'.$workshop['name'].'</div></a>';
+        echo '<a href="workshop.php?id='.$workshop['id'].'"><div class="icon">'.htmlspecialchars($workshop['name']).'</div></a>';
     }
     if($_SESSION['user_role']!="student"){
         echo '<a href="new.php"><div class="icon newWorkshop">Add new</div></a>';
