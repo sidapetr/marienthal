@@ -12,7 +12,6 @@ if(!empty($_SESSION['user_id'])){
         unset($_SESSION['user_name']);
         unset($_SESSION['user_role']);
         unset($_SESSION['user_nation']);
-        //TODO: zkontrolovat a případně doplnit unset na všechny další hodnoty $_SESSION
 
         header('Location: index.php');
         exit();

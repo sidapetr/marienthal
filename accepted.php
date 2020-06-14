@@ -43,11 +43,17 @@ if (empty($_GET['id'])) {
 
 } else {
 
+    $workshopQuery = $db->prepare('SELECT * FROM mt_workshop WHERE id=:id LIMIT 1;');
+    $workshopQuery->execute([':id'=>$_GET['id']]);
+    $workshop = $workshopQuery->fetch(PDO::FETCH_ASSOC);
+
+    echo '<h1>'.htmlspecialchars($workshop['name']).'</h1>
+          <a href="workshop.php?id='.$workshop['id'].'"><div class="button">Workshop overview</div></a>
+          <a href="list.php?id='.$workshop['id'].'"><div class="button">Applying students</div></a>';
+
     $roleQuery = $db->prepare('SELECT * FROM mt_role WHERE workshop_id=:workshop;');
     $roleQuery->execute([':workshop'=>$_GET['id']]);
     $roles = $roleQuery->fetchAll(PDO::FETCH_ASSOC);
-
-    echo '<h1>Marienthal Workshops</h1>';
 
     foreach ($roles as $role) {
 

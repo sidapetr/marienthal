@@ -59,7 +59,6 @@ if(isset($_SESSION['user_id'])){
     }
 }
 
-//TODO: otestovat zadani chyby do formulare
 
 include '../inc/header.php';
 ?>

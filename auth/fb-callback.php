@@ -13,7 +13,7 @@ catch (Exception $e) {
 }
 
 if (!$accessToken) {
-    exit('Failed to login with facebook. Please try again.'); //TODO: vypsat v hezci podobe
+    exit('Failed to login with facebook. Please try again.');
 }
 
 $oAuth2Client = $fb->getOAuth2Client();

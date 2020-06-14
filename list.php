@@ -12,6 +12,10 @@ if(empty($_GET['id']) || ($_SESSION['user_role'] == "student")){
     exit();
 }
 
+$workshopQuery = $db->prepare('SELECT * FROM mt_workshop WHERE id=:id LIMIT 1;');
+$workshopQuery->execute([':id'=>$_GET['id']]);
+$workshop = $workshopQuery->fetch(PDO::FETCH_ASSOC);
+
 if(!empty($_POST)){
     if(is_numeric($_POST['student']) && is_numeric($_POST['role'])){
 
@@ -30,7 +34,10 @@ if(!empty($_POST)){
 
 
 include 'inc/header.php';
-echo '<h1>My workshop</h1>';           //TODO: nazev workshopu
+
+echo '<h1>'.htmlspecialchars($workshop['name']).'</h1>
+      <a href="workshop.php?id='.$workshop['id'].'"><div class="button">Workshop overview</div></a>
+      <a href="accepted.php?id='.$workshop['id'].'"><div class="button">Accepted students</div></a>';
 
 $roleQuery = $db->prepare('SELECT * FROM mt_role WHERE workshop_id=:workshop;');
 $roleQuery->execute([':workshop'=>$_GET['id']]);
